@@ -10,8 +10,6 @@
 
 @interface CXBlurView ()
 
-@property (nonatomic, strong) UIToolbar *toolbar;
-
 - (void)setup;
 
 @end
@@ -44,33 +42,24 @@
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    
-    _toolbar.frame = self.bounds;
+
     _backgroundView.frame = self.bounds;
 }
 
 #pragma mark - PB
 - (void)blur
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        _backgroundView.alpha = 0.7;
-    }];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                  
+
+                     }];
 }
 
 #pragma - PV
 - (void)setup
 {
-    if (!_toolbar) {
-        _toolbar = [[UIToolbar alloc] initWithFrame:self.bounds];
-        _toolbar.translucent = YES;
-        _toolbar.barStyle = UIBarStyleBlack;
-        [self.layer insertSublayer:_toolbar.layer atIndex:0];
-
-        _backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-        _backgroundView.alpha = 1.;
-        _backgroundView.backgroundColor = [UIColor whiteColor];
-        [self.layer insertSublayer:_backgroundView.layer above:_toolbar.layer];
-    }
+    self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.95];
 }
 
 @end
